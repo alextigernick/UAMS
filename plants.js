@@ -81,7 +81,7 @@ for(var i=0; i<myObj[x]["quantity"];i++){
 	if(i%10==0){
 		str=str+"</tr><tr>"	
 	}	
-	str =str+'<td><img src="img/'+types[myObj[x]['type']]['img']+'"></td>';
+	str =str+'<td><img src="img/'+types[myObj[x]['type']]['img']+'" id="img'+i+'+" onclick="changeX('+"img"+i+')"></td>';
 }
 str = str+"</table></div>"
 d1.insertAdjacentHTML("afterbegin",str);

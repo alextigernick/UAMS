@@ -102,9 +102,9 @@ body {
   <br>
   <br>
   <br><br>
-  <button onclick="myFunction()"><input type="submit" value="Submit"></button>
+  <button onclick="myFunction()">Submit</button>
 
-  <button class="button" href="home.html">Go Back</button>
+  <button onclick="redir()">Go Back</button>
 </form> 
    </div>
         <div>
@@ -122,6 +122,9 @@ function myFunction() {
 	myObj["num"+x] = { "type":document.getElementById("c").value,"plot":document.getElementById("b").value,"quantity":document.getElementById("a").value, "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 6 }; 
 	setCookie("main",JSON.stringify(myObj),"200000000");
 
+	window.location = "home.html";
+}
+function redir() {
 	window.location = "home.html";
 }
 
