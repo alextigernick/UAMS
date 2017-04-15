@@ -70,7 +70,8 @@ var next = (12 -((d.getTime()-myObj[x]['lastWater'])/(1000*60*60)));
 var minutes = next - Math.floor(12 -((d.getTime()-myObj[x]['lastWater'])/(1000*60*60)));
 minutes = Math.floor(minutes*60);
 
-str = '<div class="'+myObj[x]['type']+'">Needs to watered in ' +Math.floor(next)+ " hours " +"and "+minutes+" minutes</div>";
+str = '<div class="'+myObj[x]['type']+'">Needs to watered in ' +Math.floor(next)+ " hours " +"and "+minutes+" minutes<br>Harvest in "+Math.round((30-((d.getTime()-myObj[x]['start'])/(1000*60*60*24*0.973301791))))+" Sols</div>";
+str 
 d1.insertAdjacentHTML("afterbegin",str);
 
 d1 = document.getElementById('table');
