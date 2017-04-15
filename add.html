@@ -1,0 +1,124 @@
+<!DOCTYPE HTML> 
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="practice.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway" rel="stylesheet">
+        <title>Plant Management System</title>
+        <style>
+    
+html {
+    font-family: 'Raleway';, sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.crops {
+    font-size: 20px;
+    color: #fff;
+    border-radius: 15px;
+    border-style: solid;
+    overflow: hidden;
+    display: inline-block;
+    
+    margin: 10px;
+    padding: 10px;
+    width: 20%;
+    background-color:#2ecc71;
+    border: 5px #F9FBE7;
+    box-shadow: 1px 2px 1px grey;
+    text-decoration: none;
+}   
+
+
+
+#fInfo{
+    float: left;
+}
+
+
+.crops img{
+    width: 100px;
+    height: 100px;
+}
+
+.plant{
+    display: block;
+    margin: auto;
+}
+
+#header{
+    background-color:;
+    text-align: center;
+    padding-top:5px;
+    padding-bottom: 5px;
+    color: rgb(35, 52, 35);
+    font-family 'Quicksand';
+}
+
+#stats{
+    color:white;
+    background-color:#1f7a7a;
+    padding: 10px;
+    background-color:#1f7a7a;
+    box-shadow: 1px 2px 1px grey;
+    position: static;
+    overflow:hidden;
+    
+}
+.crops-group{
+    overflow: hidden;
+    text-align: center;
+}
+    </style>
+    </head>
+    
+<body>
+    <div id="header">
+	
+	<center> <h1>Add New Crop</h1> </center></div> 
+	<hr>
+<div class="crops-group">
+<a href="plants.html"><div class="crops">
+	    <div class="plant">
+	 <center><img src="https://www.shareicon.net/data/512x512/2016/04/12/748571_garden_512x512.png"> </center>
+    <h2 style="text-align:center">Specifics</h2>
+    <div class ="info"> 
+   <form action="/action_page.php"> 
+   <!-- Input the information for the new crop -->
+    Quantity:<br>
+  <input type="text" name="quantity" value="50">
+  <br>
+    Light Needed:<br>
+  <input type="text" name="light" value="6 hours">
+    Soil Type:<br>
+  <input type="text" name="soil" value="Loam">
+  <br>  
+    pH:<br>
+  <input type="text" name="ph" value="6.0 - 6.5 pH">
+    Crop:<br>
+  <input type="text" name="crop" value="Potato">
+  <br>
+  <br>
+  <br><br>
+  <button onclick="myFunction()"><input type="submit" value="Submit"></button>
+</form> 
+   </div>
+        <div>
+        </div>
+           </div></a>
+
+</body>
+</html>
