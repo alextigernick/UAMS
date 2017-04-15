@@ -86,12 +86,12 @@ body {
     <h2 style="text-align:center">Specifics</h2>
     <div class ="info"> 
    <!-- Input the information for the new crop -->
-    Quantity:<br>
+    <center>Quantity:</center><br>
   <input type="text" name="quantity" id="a" value="50">
   <br>
-    Plot:<br>
+    <center>Plot:</center><br>
   <input type="text" name="plot" id="b" value="0">
-    Crop:<br>
+    <center>Crop:</center><br>
 	<select name=plant id="c">
 
 	  <option value="Potatoes">Potatoes</option>
@@ -102,9 +102,9 @@ body {
   <br>
   <br>
   <br><br>
-  <button onclick="myFunction()"><input type="submit" value="Submit"></button>
+  <button onclick="myFunction()"><input class="button" type="submit" value="Submit"></button>
 
-  <button class="button" href="home.html">Go Back</button>
+  <button class="button" href="https://alextigernick.github.io/UAMS/home.html">Go Back</button>
 </form> 
    </div>
         <div>
@@ -121,10 +121,8 @@ function myFunction() {
 	}
 	myObj["num"+x] = { "type":document.getElementById("c").value,"plot":document.getElementById("b").value,"quantity":document.getElementById("a").value, "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 6 }; 
 	setCookie("main",JSON.stringify(myObj),"200000000");
-
 	window.location = "home.html";
 }
-
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
