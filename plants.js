@@ -1,6 +1,6 @@
-var d1 = document.getElementById('nope');
+
 var d = new Date();
-var types = {"Potatos":{"img":"potato.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Corn":{"img":"corn.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Beans":{"img":"beans.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Cabbage":{"img":"cabbage.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"}};
+var types = {"Potatoes":{"img":"potato.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Corn":{"img":"corn.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Beans":{"img":"beans.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Cabbage":{"img":"cabbage.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"}};
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -59,9 +59,35 @@ function parseURLParams(url) {
 }
 
 myObj = JSON.parse(getCookie("main"));
-var x = parseURLParams(window.location.search);
-var str = '<div class="'+myObj[x['plant']]['type']+'"><img src="img/'+types[myObj[x['plant']]['type']]['img']+'"></div>';
+var x = parseURLParams(window.location.search)['plant'][0];
+var str = '<div class="'+myObj[x]['type']+'">'+myObj[x]['type']+" in plot "+myObj[x]['plot']+'</div>';
 
+var d1 = document.getElementById('main');
+d1.insertAdjacentHTML("afterbegin",str);
+
+d1 = document.getElementById('water');
+var next = (12 -((d.getTime()-myObj[x]['lastWater'])/(1000*60*60)));
+var minutes = next - Math.floor(12 -((d.getTime()-myObj[x]['lastWater'])/(1000*60*60)));
+minutes = Math.floor(minutes*60);
+
+str = '<div class="'+myObj[x]['type']+'">Needs to watered in ' +Math.floor(next)+ " hours " +"and "+minutes+" minutes</div>";
+d1.insertAdjacentHTML("afterbegin",str);
+
+d1 = document.getElementById('table');
+
+str = '<div class="'+myObj[x]['type']+'"><table><tr>';
+for(var i=0; i<myObj[x]["quantity"];i++){
+	if(i%10==0){
+		str=str+"</tr><tr>"	
+	}	
+	str =str+'<td><img src="img/'+types[myObj[x]['type']]['img']+'"></td>';
+}
+str = str+"</table>"
+d1.insertAdjacentHTML("afterbegin",str);
+
+d1 = document.getElementById('info');
+
+str = '<div class="'+myObj[x]['type']+'">Soil type: '+types[myObj[x]['type']]['soil']+"<br>Light: "+types[myObj[x]['type']]["light"]+"<br>PH Range:"+types[myObj[x]['type']]["ph"]+"</div>";
 d1.insertAdjacentHTML("afterbegin",str);
 
 setCookie("main",JSON.stringify(myObj),"2000000000");

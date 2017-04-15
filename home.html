@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="practice.css">
         <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway" rel="stylesheet">
-        <title>Plant Monitoring System</title>
+        <title>Plant Management System</title>
         <style>
     
 html {
@@ -20,8 +20,9 @@ body {
     color: #fff;
     border-radius: 15px;
     border-style: solid;
-    float: left;
-    float: left;
+    overflow: hidden;
+    display: inline-block;
+    
     margin: 10px;
     padding: 10px;
     width: 20%;
@@ -31,22 +32,7 @@ body {
     text-decoration: none;
 }   
 
-.crops p{
-    display: none;
-}
-
-.crops:hover {
-    height: 300px;
-    display: block;
-    border-radius: 15px;
-}
-
-.crops:hover p{
-    display: block;
-    text-align: center;
-}
-
-img{
+.crops img{
     width: 100px;
     height: 100px;
 }
@@ -66,30 +52,36 @@ img{
 }
 
 #stats{
-    height:20%;
     color:white;
     background-color:#1f7a7a;
     padding: 10px;
     background-color:#1f7a7a;
     box-shadow: 1px 2px 1px grey;
+    position: static;
+    overflow:hidden;
+    
 }
-
-</style>
+.crops-group{
+    overflow: hidden;
+    text-align: center;
+}
+    </style>
     </head>
     
 <body>
     <div id="header">
-    <h1> Plant Management System</h1>
-    </div>
-    
-<div id="stats"><h3>Overall Stats </h3>    
-<p>&emsp; <strong>Grow Light:</strong> On &emsp; &emsp; <strong>Farm Position:</strong> Spacecraft &emsp;&emsp;<strong>Universal Time:</strong> 20:00</p>
-    </div> 
-    
-<h1>Field Statistics</h1> 
+    <h3> Plant Management System</h3>
+ 
+	
+	<center> <h1>Field Statistics</h1> </center></div> 
+	<hr>
+<div class="crops-group">
 <div id = "nope"></div>
-
 </div>
+
+<div id="stats"><h3>General Field Information</h3>    
+<p>&emsp; <strong>Grow Light:</strong> On &emsp; &emsp; <strong>Farm Position:</strong> Spacecraft &emsp;&emsp;<strong>Universal Time:</strong> 20:00 </p>
+    </div> 
 <script src="demo.js"></script>
 </body>
 </html>

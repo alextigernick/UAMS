@@ -2,7 +2,7 @@ var d1 = document.getElementById('nope');
 var d = new Date();
 var types = {"Potatoes":{"img":"potato.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Corn":{"img":"corn.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Beans":{"img":"beans.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Cabbage":{"img":"cabbage.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"}};
 
-var myObj = {"num1":{ "type":"Potatoes","plot":"1","quantity":"50", "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 4 },"num2":{ "type":"Beans","plot":"2","quantity":"100", "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 6 }};
+var myObj = {"num1":{ "type":"Potatoes","plot":"2","quantity":"50", "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 4 },"num2":{ "type":"Beans","plot":"1","quantity":"100", "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 6 }};
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
