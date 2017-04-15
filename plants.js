@@ -62,7 +62,7 @@ myObj = JSON.parse(getCookie("main"));
 var x = parseURLParams(window.location.search)['plant'][0];
 var str = '<div class="'+myObj[x]['type']+'">'+myObj[x]['type']+" in plot "+myObj[x]['plot']+'</div>';
 
-var d1 = document.getElementById('main');
+d1 = document.getElementById('main');
 d1.insertAdjacentHTML("afterbegin",str);
 
 d1 = document.getElementById('water');
