@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+<style>
+	* {
+	    box-sizing: border-box;
+	}
+	.header {
+	    border: 1px solid red;
+	    padding: 15px;
+	}
+	.row::after {
+	    content: "";
+	    clear: both;
+	    display: table;
+	}
+	[class*="col-"] {
+	    float: left;
+	    padding: 15px;
+	    border: 4px groove red;
+	border-radius: 10px;
+	}
+	.col-1 {width: 8.33%;}
+	.col-2 {width: 16.66%;}
+	.col-3 {width: 25%;}
+	.col-4 {width: 33.33%;}
+	.col-5 {width: 41.66%;}
+	.col-6 {width: 50%;}
+	.col-7 {width: 58.33%;}
+	.col-8 {width: 66.66%;}
+	.col-9 {width: 75%;}
+	.col-10 {width: 83.33%;}
+	.col-11 {width: 91.66%;}
+	.col-12 {width: 100%;}
+</style>
+<body>
+<div w3-include-html="header.html"></div> 
+
+<div class="col-3">
+  <ul>
+    <li>Potato</li>
+    <li>Health:25%</li>
+    <li>The Island</li>
+    <li>The Food</li> 
+<button onclick="myFunction()">Click me</button> 
+  </ul>
+</div>
+<div w3-include-html="footer.html"></div> 
+<script>
+	w3IncludeHTML();
+</script>
+
+
+
+<script> 
+var d = new Date();
+var myObj = {"num1":{ "type":"Potato", "start":d.getTime(), "lastWater":d.getTime(),"Nutrients": 4 },"num2":{ "type":"Beans", "start":d.getTime(), "lastWater":d.getTime(),"Nutrients": 6 }};
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+} 
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+} 
+setCookie("main",JSON.stringify(myObj),"200000");
+</script>
+</body>
+</html>
+
