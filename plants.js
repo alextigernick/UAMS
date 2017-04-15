@@ -1,7 +1,6 @@
 var d1 = document.getElementById('nope');
 var d = new Date();
 var types = {"Potatos":"potato.png","Corn":"corn.png","Beans":"beans.png","Cabbage":"cabbage.png"}
-var myObj = {"num1":{ "type":"Potatoes", "start":d.getTime(), "lastWater":d.getTime(),"Nutrients": 4 },"num2":{ "type":"Beans", "start":d.getTime(), "lastWater":d.getTime(),"Nutrients": 6 }};
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -39,25 +38,30 @@ function update(cname) {
     }
     return "";
 }
+function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
 
-function $_GET(q,s) {
-    s = (s) ? s : window.location.search;
-    var re = new RegExp('&amp;'+q+'=([^&amp;]*)','i');
-    return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
+    if (query === url || query === "") return;
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=", 2);
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) parms[n] = [];
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
 }
 
-try {
-    myObj = JSON.parse(getCookie("main"));
+myObj = JSON.parse(getCookie("main"));
+var x = parseURLParams(window.location.search);
+var str = '<div class="'+myObj[x['plant']]['type']+'"><img src="img/'+types[myObj[x['plant']]['type']]+'"></div>';
 
-}
-catch(err) {
-    setCookie("main",JSON.stringify(myObj),"2000000000");
-	myObj = JSON.parse(getCookie("main"));
-}
+d1.insertAdjacentHTML("afterbegin",str);
 
-for(x in myObj){
-	var str = '<a href="plants.html?plant='+x+'&"><div class="crops"><div class="plant"><center><img src="img/'+types[myObj[x]['type']]+'"> </center><h2 style="text-align:center">'+myObj[x]['type']+'</h2><div class ="info"> <p>Nutrients'+myObj[x]["Nutrients"]+'</p></div></div><div></div></div></a>';
-
-	d1.insertAdjacentHTML("afterbegin",str);
-}
 setCookie("main",JSON.stringify(myObj),"2000000000");
