@@ -95,15 +95,14 @@ body {
 	 <center><img src="https://www.shareicon.net/data/512x512/2016/04/12/748571_garden_512x512.png"> </center>
     <h2 style="text-align:center">Specifics</h2>
     <div class ="info"> 
-   <form action="/action_page.php"> 
    <!-- Input the information for the new crop -->
     Quantity:<br>
-  <input type="text" name="quantity" value="50">
+  <input type="text" name="quantity" id="a" value="50">
   <br>
     Plot:<br>
-  <input type="text" name="plot" value="0">
+  <input type="text" name="plot" id="b" value="0">
     Crop:<br>
-	<select name=plant>
+	<select name=plant id="c">
 	  <option value="Potatoes">Potatoes</option>
 	  <option value="Cabbage">Cabbage</option>
 	  <option value="Beans">Beans</option>
@@ -113,11 +112,45 @@ body {
   <br>
   <br><br>
   <button onclick="myFunction()"><input type="submit" value="Submit"></button>
-</form> 
    </div>
         <div>
         </div>
            </div></a>
+
+<script>
+var d = new Date();
+function myFunction() {
+	myObj = JSON.parse(getCookie("main"));
+	var q = 1;
+	for(x in myObj){
+		q++;
+	}
+	myObj["num"+x] = { "type":document.getElementById("c").value,"plot":document.getElementById("b").value,"quantity":document.getElementById("a").value, "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 6 }; 
+	setCookie("main",JSON.stringify(myObj),"200000000");
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+} 
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+} 
+</script>
 
 </body>
 </html>
