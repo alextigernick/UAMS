@@ -1,6 +1,6 @@
 var d1 = document.getElementById('nope');
 var d = new Date();
-var types = {"Potato":"potato.png","Corn":"corn.png","Beans":"beans.png","Cabbage":"cabbage.png"}
+var types = {"Potatos":"potato.png","Corn":"corn.png","Beans":"beans.png","Cabbage":"cabbage.png"}
 var myObj = {"num1":{ "type":"Potatos", "start":d.getTime(), "lastWater":d.getTime(),"Nutrients": 4 },"num2":{ "type":"Beans", "start":d.getTime(), "lastWater":d.getTime(),"Nutrients": 6 }};
 
 function setCookie(cname, cvalue, exdays) {
@@ -39,7 +39,14 @@ function update(cname) {
     }
     return "";
 } 
-myObj = JSON.parse(getCookie("main"));
+try {
+    myObj = JSON.parse(getCookie("main"));
+}
+catch(err) {
+    setCookie("main",JSON.stringify(myObj),"2000000000");
+	myObj = JSON.parse(getCookie("main"));
+}
+
 for(x in myObj){
 	var str = '<a href=""><div class="crops"><div class="plant"><center><img src="img/'+types[myObj[x]['type']]+'"> </center><h2 style="text-align:center">'+myObj[x]['type']+'</h2><div class ="info"> <p>Nutrients'+myObj[x]["Nutrients"]+'</p></div></div><div></div></div></a>';
 
