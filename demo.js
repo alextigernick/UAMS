@@ -1,7 +1,8 @@
 var d1 = document.getElementById('nope');
 var d = new Date();
-var types = {"Potatos":"potato.png","Corn":"corn.png","Beans":"beans.png","Cabbage":"cabbage.png"}
-var myObj = {"num1":{ "type":"Potatoes", "start":d.getTime(), "lastWater":d.getTime(),"Nutrients": 4 },"num2":{ "type":"Beans", "start":d.getTime(), "lastWater":d.getTime(),"Nutrients": 6 }};
+var types = {"Potatoes":{"img":"potato.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Corn":{"img":"corn.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Beans":{"img":"beans.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Cabbage":{"img":"cabbage.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"}};
+
+var myObj = {"num1":{ "type":"Potatoes","plot":"1","quantity":"50", "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 4 },"num2":{ "type":"Beans","plot":"2","quantity":"100", "start":d.getTime(), "lastWater":d.getTime()-100200,"Nutrients": 6 }};
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -45,7 +46,7 @@ function $_GET(q,s) {
     var re = new RegExp('&amp;'+q+'=([^&amp;]*)','i');
     return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
 }
-
+    setCookie("main",JSON.stringify(myObj),"2000000000");
 try {
     myObj = JSON.parse(getCookie("main"));
 
@@ -56,7 +57,10 @@ catch(err) {
 }
 
 for(x in myObj){
-	var str = '<a href="plants.html?plant='+x+'&"><div class="crops"><div class="plant"><center><img src="img/'+types[myObj[x]['type']]+'"> </center><h2 style="text-align:center">'+myObj[x]['type']+'</h2><div class ="info"> <p>Nutrients'+myObj[x]["Nutrients"]+'</p></div></div><div></div></div></a>';
+	var next = (12 -((d.getTime()-myObj[x]['lastWater'])/(1000*60*60)));
+	var minutes = next - Math.floor(12 -((d.getTime()-myObj[x]['lastWater'])/(1000*60*60)));
+	minutes = Math.floor(minutes*60);
+	var str = '<a href="plants.html?plant='+x+'&"><div class="crops"><div class="plant"><center><img src="img/'+types[myObj[x]['type']]['img']+'"> </center><h2 style="text-align:center">'+myObj[x]['type']+'</h2><div class ="info"> <p>Plot: '+myObj[x]['plot']+'<br>Quantity: '+myObj[x]['quantity']+'<br>Water Time: '+Math.floor(next)+' hours and '+minutes+' minutes</p></div></div><div></div></div></a>';
 
 	d1.insertAdjacentHTML("afterbegin",str);
 }

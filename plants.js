@@ -1,6 +1,6 @@
 var d1 = document.getElementById('nope');
 var d = new Date();
-var types = {"Potatos":"potato.png","Corn":"corn.png","Beans":"beans.png","Cabbage":"cabbage.png"}
+var types = {"Potatos":{"img":"potato.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Corn":{"img":"corn.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Beans":{"img":"beans.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"},"Cabbage":{"img":"cabbage.png","soil":"Loam","ph":"4.8-5.5","light":"6 hours"}};
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -60,7 +60,7 @@ function parseURLParams(url) {
 
 myObj = JSON.parse(getCookie("main"));
 var x = parseURLParams(window.location.search);
-var str = '<div class="'+myObj[x['plant']]['type']+'"><img src="img/'+types[myObj[x['plant']]['type']]+'"></div>';
+var str = '<div class="'+myObj[x['plant']]['type']+'"><img src="img/'+types[myObj[x['plant']]['type']]['img']+'"></div>';
 
 d1.insertAdjacentHTML("afterbegin",str);
 
