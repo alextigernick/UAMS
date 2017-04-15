@@ -76,14 +76,14 @@ d1.insertAdjacentHTML("afterbegin",str);
 
 d1 = document.getElementById('table');
 
-str = '<div class="'+myObj[x]['type']+'"><table><tr>';
+str = '<div class="'+myObj[x]['type']+'"><div align="center"><table><tr>';
 for(var i=0; i<myObj[x]["quantity"];i++){
 	if(i%10==0){
 		str=str+"</tr><tr>"	
 	}	
 	str =str+'<td><img src="img/'+types[myObj[x]['type']]['img']+'"></td>';
 }
-str = str+"</table>"
+str = str+"</table></div>"
 d1.insertAdjacentHTML("afterbegin",str);
 
 d1 = document.getElementById('info');
