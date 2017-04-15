@@ -38,9 +38,17 @@ function update(cname) {
         }
     }
     return "";
-} 
+}
+
+function $_GET(q,s) {
+    s = (s) ? s : window.location.search;
+    var re = new RegExp('&amp;'+q+'=([^&amp;]*)','i');
+    return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
+}
+
 try {
     myObj = JSON.parse(getCookie("main"));
+
 }
 catch(err) {
     setCookie("main",JSON.stringify(myObj),"2000000000");
@@ -48,7 +56,7 @@ catch(err) {
 }
 
 for(x in myObj){
-	var str = '<a href=""><div class="crops"><div class="plant"><center><img src="img/'+types[myObj[x]['type']]+'"> </center><h2 style="text-align:center">'+myObj[x]['type']+'</h2><div class ="info"> <p>Nutrients'+myObj[x]["Nutrients"]+'</p></div></div><div></div></div></a>';
+	var str = '<a href="plants.html?plant='+x+'"><div class="crops"><div class="plant"><center><img src="img/'+types[myObj[x]['type']]+'"> </center><h2 style="text-align:center">'+myObj[x]['type']+'</h2><div class ="info"> <p>Nutrients'+myObj[x]["Nutrients"]+'</p></div></div><div></div></div></a>';
 
 	d1.insertAdjacentHTML("afterbegin",str);
 }
