@@ -46,7 +46,7 @@ function $_GET(q,s) {
     var re = new RegExp('&amp;'+q+'=([^&amp;]*)','i');
     return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
 }
-    setCookie("main",JSON.stringify(myObj),"2000000000");
+//    setCookie("main",JSON.stringify(myObj),"2000000000");
 try {
     myObj = JSON.parse(getCookie("main"));
 
