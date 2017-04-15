@@ -60,7 +60,7 @@ for(x in myObj){
 	var next = (12 -((d.getTime()-myObj[x]['lastWater'])/(1000*60*60)));
 	var minutes = next - Math.floor(12 -((d.getTime()-myObj[x]['lastWater'])/(1000*60*60)));
 	minutes = Math.floor(minutes*60);
-	var str = '<a href="plants.html?plant='+x+'&"><div class="crops"><div class="plant"><center><img src="img/'+types[myObj[x]['type']]['img']+'"> </center><h2 style="text-align:center">'+myObj[x]['type']+'</h2><div class ="info"> <p>Plot: '+myObj[x]['plot']+'<br>Quantity: '+myObj[x]['quantity']+'<br>Water in: '+Math.floor(next)+' hours and '+minutes+' minutes</p></div></div><div></div></div></a>';
+	var str = '<a href="plants.html?plant='+x+'&"><div class="crops"><div class="plant"><img src="x.png"><center><img src="img/'+types[myObj[x]['type']]['img']+'"> </center><h2 style="text-align:center">'+myObj[x]['type']+'</h2><div class ="info"> <p>Plot: '+myObj[x]['plot']+'<br>Quantity: '+myObj[x]['quantity']+'<br>Water in: '+Math.floor(next)+' hours and '+minutes+' minutes</p></div></div><div></div></div></a>';
 
 	d1.insertAdjacentHTML("afterbegin",str);
 }

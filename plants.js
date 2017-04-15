@@ -57,7 +57,11 @@ function parseURLParams(url) {
     }
     return parms;
 }
-
+function changeX(x) {
+	d1 = document.getElementById(x);
+	d2 = document.getElementById("Specificinfo");
+	d2.innerHTML = "Height: "+d1.dataset['h']+" inches<br>Acidity: "+d1.dataset['acid'];
+}
 myObj = JSON.parse(getCookie("main"));
 var x = parseURLParams(window.location.search)['plant'][0];
 var str = '<div class="'+myObj[x]['type']+'">'+myObj[x]['type']+" in plot "+myObj[x]['plot']+'</div>';
@@ -79,11 +83,11 @@ d1 = document.getElementById('table');
 str = '<div class="'+myObj[x]['type']+'"><div align="center"><table><tr>';
 for(var i=0; i<myObj[x]["quantity"];i++){
 	if(i%10==0){
-		str=str+"</tr><tr>"	
+		str=str+"</tr><tr>";
 	}	
-	str =str+'<td><img src="img/'+types[myObj[x]['type']]['img']+'" id="img'+i+'+" onclick="changeX('+"img"+i+')"></td>';
+	str =str+'<td><img data-h ="'+Math.floor(Math.random()*10+12)+'" data-acid ="'+Math.floor(Math.random()*3+3)+'" src="img/'+types[myObj[x]['type']]['img']+'" id="img'+i+'" onclick="changeX('+"'img"+i+"'"+')"></td>';
 }
-str = str+"</table></div>"
+str = str+"</table></div>";
 d1.insertAdjacentHTML("afterbegin",str);
 
 d1 = document.getElementById('info');
