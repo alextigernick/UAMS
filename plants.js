@@ -113,5 +113,7 @@ d1 = document.getElementById('info');
 
 str = '<div class="'+myObj[x]['type']+'">Soil type: '+types[myObj[x]['type']]['soil']+"<br>Light: "+types[myObj[x]['type']]["light"]+"<br>PH Range:"+types[myObj[x]['type']]["ph"]+"</div>";
 d1.insertAdjacentHTML("afterbegin",str);
-
+function redir() {
+	window.location = "home.html";
+}
 setCookie("main",JSON.stringify(myObj),"2000000000");
