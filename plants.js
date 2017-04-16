@@ -44,8 +44,7 @@ function water() {
 	var d = new Date();
 	myObj[x]["lastWater"] = d.getTime();
 	setCookie("main",JSON.stringify(myObj),"2000000000");
- location.reload(); 
-
+ 	location.reload();
 	
 }
 function parseURLParams(url) {
