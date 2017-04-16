@@ -38,6 +38,16 @@ function update(cname) {
     }
     return "";
 }
+function water() {
+	myObj = JSON.parse(getCookie("main"));
+	var x = parseURLParams(window.location.search)['plant'][0];
+	var d = new Date();
+	myObj[x]["lastWater"] = d.getTime();
+	setCookie("main",JSON.stringify(myObj),"2000000000");
+ location.reload(); 
+
+	
+}
 function parseURLParams(url) {
     var queryStart = url.indexOf("?") + 1,
         queryEnd   = url.indexOf("#") + 1 || url.length + 1,
