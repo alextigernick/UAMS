@@ -60,7 +60,11 @@ function parseURLParams(url) {
 function changeX(x) {
 	d1 = document.getElementById(x);
 	d2 = document.getElementById("Specificinfo");
-	d2.innerHTML = "Height: "+d1.dataset['h']+" inches<br>Acidity: "+d1.dataset['acid'];
+	acid = d1.dataset['acid'];
+	if(acid!=5){
+		acid="<font color='red'>"+acid+"</font>"
+	}
+	d2.innerHTML = "Height: "+d1.dataset['h']+" inches<br>Acidity: "+acid;
 }
 myObj = JSON.parse(getCookie("main"));
 var x = parseURLParams(window.location.search)['plant'][0];
@@ -84,8 +88,13 @@ str = '<div class="'+myObj[x]['type']+'"><div align="center"><table><tr>';
 for(var i=0; i<myObj[x]["quantity"];i++){
 	if(i%10==0){
 		str=str+"</tr><tr>";
-	}	
-	str =str+'<td><img data-h ="'+Math.floor(Math.random()*10+12)+'" data-acid ="'+Math.floor(Math.random()*3+3)+'" src="img/'+types[myObj[x]['type']]['img']+'" id="img'+i+'" onclick="changeX('+"'img"+i+"'"+')"></td>';
+	}
+	var acid = Math.round(Math.random()*0.52+5);
+	var st = types[myObj[x]['type']]['img'];
+	if(acid!=5){
+		st = "acid.png";
+	}
+	str =str+'<td><img data-h ="'+Math.floor(Math.random()*10+12)+'" data-acid ="'+acid+'" src="img/'+st+'" id="img'+i+'" onclick="changeX('+"'img"+i+"'"+')"></td>';
 }
 str = str+"</table></div>";
 d1.insertAdjacentHTML("afterbegin",str);
